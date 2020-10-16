@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!-- ======================================================================= -->
+<!--                                                                         -->
+<!-- NAME                                                                    -->
+<!-- apk-js-lib-vuln-scan-tools.xml - APK Scan Tool                          -->
+<!--                                                                         -->
+<!-- DESCRIPTION                                                             -->
+<!-- Run APK Scan Tool                                                       -->
+<!--                                                                         -->
+<project name="apk-js-lib-vuln-scan-tools" default="scan_apk_vuln_js_lib">
+
+  <description>APK Scan Tool</description>
+	
+  <taskdef name="apkVulnerableJavaScriptLibrariesScanner"
+	 classname="apk_js_lib_vuln_scan_test.anttask.APKVulnerableJavaScriptLibrariesScanner">
+    <classpath>
+      <pathelement location="C:/eclipse/workspaces_sans/apk-js-lib-vuln-scan-test/bin/"/>
+      <pathelement location="C:/eclipse/workspaces_sans/apk-js-lib-vuln-scan-test/src/main/config/"/>	
+      <fileset dir="C:/eclipse/workspaces_sans/apk-js-lib-vuln-scan-test/src/main/lib">
+       <include name="**/*.jar"/>
+      </fileset>    	
+  	</classpath>
+  </taskdef>	
+	
+  <!-- ================================================ -->
+  <!-- scan_apk_vuln_js_lib                             -->
+  <!-- ================================================ -->
+  <target name="scan_apk_vuln_js_lib" description="Usage: ant -f apk-js-lib-vuln-scan-tools.xml scan_apk_vuln_js_lib -Dapk_folder=C:/eclipse/workspaces_sans/apk-js-lib-vuln-scan-test/sample_data/apk">
+	<apkVulnerableJavaScriptLibrariesScanner baseDirectory="${apk_folder}" includes="**\\*.apk"/>
+  </target>
+	
+</project>
